@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sarah & Woo Seok — December 12, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="petal-canvas"></canvas>
+
+  <nav>
+    <span class="nav-monogram">S &amp; W</span>
+    <ul class="nav-links">
+      <li><a href="#details">Details</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#playlist">Playlist</a></li>
+    </ul>
+    <a href="#rsvp" class="nav-rsvp">RSVP Now</a>
+  </nav>
+
+  <section id="hero">
+    <p class="hero-date">December 12, 2026 &nbsp;·&nbsp; La Luz Beach Resort, Makati</p>
+    <h1 class="hero-names">
+      Sarah<span class="hero-amp">&amp;</span><span>Woo Seok</span>
+    </h1>
+    <div class="hero-divider">We're getting married</div>
+    <p class="hero-venue">La Luz Beach Resort &nbsp;·&nbsp; Makati &nbsp;·&nbsp; 2:00 in the afternoon</p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      scroll
+    </div>
+  </section>
+
+  <div id="countdown">
+    <p class="countdown-label">The celebration begins in</p>
+    <div class="countdown-grid">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">000</span>
+        <span class="countdown-unit-label">Days</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">00</span>
+        <span class="countdown-unit-label">Hours</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">00</span>
+        <span class="countdown-unit-label">Minutes</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">00</span>
+        <span class="countdown-unit-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="details" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">Event details</span>
+        <h2 class="section-title">Mark your calendars.</h2>
+        <p class="section-sub">We'd love to celebrate this special day with the people who matter most to us.</p>
+      </div>
+      <div class="details-grid reveal">
+        <div class="detail-card">
+          <div class="detail-icon">📅</div>
+          <div class="detail-card-label">Date</div>
+          <div class="detail-card-val">December 12, 2026<br/><small style="font-size:.85em;opacity:.6">Saturday</small></div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">🕑</div>
+          <div class="detail-card-label">Time</div>
+          <div class="detail-card-val">Ceremony at 2:00 PM<br/><small style="font-size:.85em;opacity:.6">Reception to follow</small></div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">🌿</div>
+          <div class="detail-card-label">Venue</div>
+          <div class="detail-card-val">La Luz Beach Resort<br/><small style="font-size:.85em;opacity:.6">Makati, Philippines</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lookup" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">Guest list</span>
+        <h2 class="section-title">Find your invitation.</h2>
+        <p class="section-sub">Search your name to confirm you're on the guest list before submitting your RSVP.</p>
+      </div>
+      <div class="lookup-box reveal">
+        <div class="lookup-row">
+          <input class="lookup-input" id="lookupInput" type="text" placeholder="Type your name…" oninput="searchGuests()"/>
+          <button class="btn-gold" onclick="searchGuests()">Search</button>
+        </div>
+        <div class="lookup-results" id="lookupResults"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">RSVP</span>
+        <h2 class="section-title">Will you join us?</h2>
+        <p class="section-sub">Kindly reply by November 1, 2026. We can't wait to celebrate with you.</p>
+      </div>
+      <div class="rsvp-form reveal">
+        <div id="rsvpFormWrap">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">First name</label>
+              <input class="form-input" id="rfirst" type="text" placeholder="Sarah"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last name</label>
+              <input class="form-input" id="rlast" type="text" placeholder="Lee"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email address</label>
+              <input class="form-input" id="remail" type="email" placeholder="you@email.com"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Number of guests</label>
+              <select class="form-select" id="rguests">
+                <option value="1">Just me (1)</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Will you be attending?</label>
+              <div class="attend-toggle">
+                <button class="attend-btn yes" onclick="setAttend('yes',this)">✓ &nbsp;Joyfully accepts</button>
+                <button class="attend-btn no"  onclick="setAttend('no',this)">✕ &nbsp;Regretfully declines</button>
+              </div>
+            </div>
+            <div class="form-group full" id="mealSection">
+              <label class="form-label">Meal preference</label>
+              <div class="meal-grid">
+                <button class="meal-btn" onclick="setMeal('Beef',this)">🥩 Beef</button>
+                <button class="meal-btn" onclick="setMeal('Fish',this)">🐟 Fish</button>
+                <button class="meal-btn" onclick="setMeal('Vegetarian',this)">🥗 Vegetarian</button>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Dietary restrictions or notes</label>
+              <textarea class="form-textarea" id="rnotes" placeholder="Allergies, accessibility needs, or anything we should know…"></textarea>
+            </div>
+          </div>
+          <button class="form-submit-btn" id="rsvpSubmitBtn" onclick="submitRSVP()">Send my RSVP</button>
+        </div>
+        <div class="rsvp-success" id="rsvpSuccess">
+          <div class="rsvp-success-icon">🌸</div>
+          <h3>Thank you!</h3>
+          <p>We've received your RSVP and we're so excited to celebrate with you.<br/>See you on December 12th!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">Our story</span>
+        <h2 class="section-title">Moments we cherish.</h2>
+        <p class="section-sub">A few glimpses of us, before the biggest day of our lives.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">💑</div>
+        <div class="gallery-item">🌸</div>
+        <div class="gallery-item">🌊</div>
+        <div class="gallery-item">🌅</div>
+        <div class="gallery-item">✨</div>
+      </div>
+      <p class="gallery-upload-hint reveal">Photos coming soon — stay tuned</p>
+    </div>
+  </section>
+
+  <section id="playlist" class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-eyebrow">Music wishlist</span>
+        <h2 class="section-title">Request a song.</h2>
+        <p class="section-sub">Help us build the perfect soundtrack. Add a song you'd love to hear on our special day.</p>
+      </div>
+      <div class="playlist-form reveal">
+        <div class="playlist-row">
+          <input class="lookup-input" id="songInput" type="text" placeholder="Song title…" style="flex:1.5"/>
+          <input class="lookup-input" id="artistInput" type="text" placeholder="Artist…" style="flex:1"/>
+          <input class="lookup-input" id="noteInput" type="text" placeholder="Why this song? (optional)" style="flex:1.5"/>
+          <button class="btn-gold" onclick="addSong()">Add ♪</button>
+        </div>
+        <ul class="playlist-list" id="playlistList">
+          <li class="playlist-item">
+            <span class="playlist-num">1</span>
+            <div class="playlist-info">
+              <div class="playlist-song">Can't Help Falling in Love</div>
+              <div class="playlist-artist">Elvis Presley</div>
+              <div class="playlist-note">A timeless classic for the first dance</div>
+            </div>
+          </li>
+          <li class="playlist-item">
+            <span class="playlist-num">2</span>
+            <div class="playlist-info">
+              <div class="playlist-song">A Thousand Years</div>
+              <div class="playlist-artist">Christina Perri</div>
+              <div class="playlist-note">For the walk down the aisle 🌸</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-names">Sarah &amp; Woo Seok</p>
+    <p>December 12, 2026 &nbsp;·&nbsp; La Luz Beach Resort, Makati</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
